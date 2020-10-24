@@ -83,21 +83,6 @@ func InitLog() {
   Trace("Log subsystem initialized")
 }
 
-// func Trace(msg string) {
-//   if conf.Debug {
-//     if conf.Nrapi != "" {
-//       params := map[string]interface{}{
-//           "source":     "tsak",
-//           "appname":    conf.Name,
-//           "appID":      conf.ID,
-//       }
-//       NLog().Debug(msg, params)
-//       // Log().WithFields(params).Trace(msg)
-//     } else {
-//       Log().Trace(msg)
-//     }
-//   }
-// }
 
 func Trace(msg string) {
   if conf.Debug {
@@ -107,13 +92,17 @@ func Trace(msg string) {
               "appID":      conf.ID,
     }
     Log().WithFields(params).Trace(msg)
-    // app.Debug(msg)
   }
 }
 
 func Info(msg string) {
   if conf.Info {
-    
+    params := map[string]interface{}{
+              "source":     "tsak",
+              "appname":    conf.Name,
+              "appID":      conf.ID,
+    }
+    Log().WithFields(params).Info(msg)
   }
 }
 
