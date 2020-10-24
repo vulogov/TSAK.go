@@ -5,6 +5,7 @@ import (
   "os"
   "github.com/vulogov/Ushell/internal/log"
   "github.com/vulogov/Ushell/internal/conf"
+  "github.com/vulogov/Ushell/internal/signal"
   "github.com/google/uuid"
 )
 
@@ -25,4 +26,5 @@ func Init() {
   flag.IntVar(&conf.Maxage, "logage", 7, "Maximum age of the logfile in days")
   flag.Parse()
   log.InitLog()
+  signal.InitSignal()
 }

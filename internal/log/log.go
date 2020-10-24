@@ -91,7 +91,10 @@ func Trace(msg string) {
               "appname":    conf.Name,
               "appID":      conf.ID,
     }
+    txn := app.StartTransaction("trace")
     Log().WithFields(params).Trace(msg)
+    app.RecordCustomEvent("TSAK", params)
+    txn.End()
   }
 }
 
@@ -120,4 +123,10 @@ func Error(msg string) {
 
 func Log() *logrus.Logger {
     return log
+}
+
+func Shutdown() {
+  if conf.Nrapi != "" {
+    app.Shutdown(0)
+  }
 }
