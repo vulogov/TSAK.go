@@ -22,9 +22,6 @@ func Event(evttype string, ctx logrus.Fields) {
     payload.Set(value, key)
   }
   payload.Set(time.Now().UnixNano() / int64(time.Millisecond), "timestamp")
-  if conf.Debug {
-    fmt.Println(payload.String())
-  }
   if conf.Nrapi != "" {
     event(conf.Nrapi, conf.Evtapi, []byte(payload.String()))
   }

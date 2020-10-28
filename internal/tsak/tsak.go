@@ -6,5 +6,6 @@ import (
 
 func TSAK() {
   Init()
+  Run()
   signal.Loop()
 }

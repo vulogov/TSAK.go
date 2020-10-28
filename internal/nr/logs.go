@@ -23,9 +23,6 @@ func Log(msg string, logtype string, ctx logrus.Fields) {
   payload.Set(time.Now().UnixNano() / int64(time.Millisecond), "timestamp")
   payload.Set(msg, "message")
   payload.Set(logtype, "logtype")
-  if conf.Debug {
-    fmt.Println(payload.String())
-  }
   if conf.Nrapi != "" {
     logs(conf.Nrapi, conf.Logapi, true, []byte(payload.String()))
   }

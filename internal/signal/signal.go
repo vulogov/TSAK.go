@@ -76,7 +76,7 @@ func Loop() {
   wg.Wait()
   log.Shutdown()
   log.Event("TsakEvent", logrus.Fields{
-    "event":    "Application exited",
-    "evtc":     0,
+    "message":    "Application exited",
+    "evtc":       1,
   })
 }

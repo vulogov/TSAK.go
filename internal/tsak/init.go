@@ -32,7 +32,7 @@ func Init() {
   log.InitLog()
   signal.InitSignal()
   log.Event("TsakEvent", logrus.Fields{
-    "event":    "Application started",
-    "evtc":     0,
+    "message":    "Application started",
+    "evtc":       0,
   })
 }
