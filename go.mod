@@ -9,6 +9,7 @@ require (
 	github.com/goreleaser/goreleaser v0.145.0 // indirect
 	github.com/kr/text v0.2.0 // indirect
 	github.com/newrelic/go-agent/v3 v3.9.0
+	github.com/newrelic/go-agent/v3/integrations/logcontext/nrlogrusplugin v1.0.0
 	github.com/newrelic/go-agent/v3/integrations/nrlogrus v1.0.0
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/sirupsen/logrus v1.6.0

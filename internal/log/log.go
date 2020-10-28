@@ -4,14 +4,18 @@ import (
   "fmt"
   "os"
   "io"
+  "context"
   "github.com/sirupsen/logrus"
   "gopkg.in/natefinch/lumberjack.v2"
   "github.com/vulogov/Ushell/internal/conf"
   "github.com/newrelic/go-agent/v3/integrations/nrlogrus"
+  "github.com/newrelic/go-agent/v3/integrations/logcontext/nrlogrusplugin"
   newrelic "github.com/newrelic/go-agent/v3/newrelic"
+  //"github.com/vulogov/Ushell/internal/nr"
 )
 
 var log = logrus.New()
+var slog = logrus.New()
 var app *newrelic.Application
 var ljack *lumberjack.Logger
 var writer io.Writer
@@ -24,23 +28,30 @@ func InitLog() {
       MaxAge:     conf.Maxage,
       Compress:   false,
     }
-    if conf.Stdout {
-      writer = io.MultiWriter(os.Stdout, ljack)
-    } else {
-      writer = io.MultiWriter(ljack)
-    }
-  } else {
-    if conf.Stdout {
-      writer = io.MultiWriter(os.Stdout)
-    } else {
-      writer = io.MultiWriter()
-    }
+    slog.SetFormatter(&logrus.JSONFormatter{})
+    slog.Level = logrus.TraceLevel
+    slog.SetOutput(os.Stdout)
+    if conf.Nrapi == "" {
+      if conf.Stdout {
+          writer = io.MultiWriter(os.Stdout, ljack)
+        } else {
+          writer = io.MultiWriter(ljack)
+        }
+      } else {
+        if conf.Stdout {
+          writer = io.MultiWriter(os.Stdout)
+        } else {
+          writer = io.MultiWriter()
+        }
+      }
   }
   if conf.Production {
-    log.SetFormatter(&logrus.JSONFormatter{})
-    log.Level = logrus.TraceLevel
-    log.SetOutput(writer)
-    if conf.Nrapi != "" {
+    if conf.Nrapi == "" {
+      log.SetFormatter(&logrus.JSONFormatter{})
+      log.Level = logrus.TraceLevel
+      log.SetOutput(writer)
+    } else {
+      log.SetFormatter(nrlogrusplugin.ContextFormatter{})
       app, _ = newrelic.NewApplication(
         newrelic.ConfigAppName(conf.Name),
         newrelic.ConfigLicense(conf.Nrapi),
@@ -91,10 +102,20 @@ func Trace(msg string) {
               "appname":    conf.Name,
               "appID":      conf.ID,
     }
-    txn := app.StartTransaction("trace")
-    Log().WithFields(params).Trace(msg)
-    app.RecordCustomEvent("TSAK", params)
-    txn.End()
+    if conf.Nrapi == "" {
+      Log().WithFields(params).Trace(msg)
+    } else {
+      if conf.Nragent {
+        txn := app.StartTransaction("trace")
+        ctx := newrelic.NewContext(context.Background(), txn)
+        log.WithContext(ctx).WithFields(params).Trace(msg)
+        txn.End()
+      } else {
+        if conf.Stdout {
+          slog.WithFields(params).Trace(msg)
+        }
+      }
+    }
   }
 }
 
