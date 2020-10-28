@@ -7,6 +7,7 @@ import (
   "github.com/vulogov/TSAK/internal/log"
   "github.com/vulogov/TSAK/internal/conf"
   "github.com/vulogov/TSAK/internal/signal"
+  "github.com/vulogov/TSAK/internal/script"
   "github.com/google/uuid"
 )
 
@@ -28,9 +29,15 @@ func Init() {
   flag.StringVar(&conf.Evtapi, "evtapi", "https://insights-collector.newrelic.com/v1/accounts/%s/events", "EVT API endpoint")
   flag.IntVar(&conf.Maxsize, "logsize", 100, "Maximum size of the log file in Mb")
   flag.IntVar(&conf.Maxage, "logage", 7, "Maximum age of the logfile in days")
+  flag.StringVar(&conf.In, "in", "", "Name of the script for the input")
+  flag.StringVar(&conf.Proc, "proc", "", "Name of the script for the processing")
+  flag.StringVar(&conf.Out, "out", "", "Name of the script for the output")
+  flag.StringVar(&conf.Run, "run", "", "Name of the exclusive run script (-in/-out/-proc will be ignored)")
+  flag.StringVar(&conf.Conf, "conf", "", "Configuration file")
   flag.Parse()
   log.InitLog()
   signal.InitSignal()
+  script.InitScript()
   log.Event("TsakEvent", logrus.Fields{
     "message":    "Application started",
     "evtc":       0,

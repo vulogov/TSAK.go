@@ -12,6 +12,7 @@ import (
   "github.com/Jeffail/gabs"
 )
 
+
 func Event(evttype string, ctx logrus.Fields) {
   payload := gabs.New()
   payload.Set(evttype, "eventType")

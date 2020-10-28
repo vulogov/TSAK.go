@@ -15,7 +15,11 @@ type Fields logrus.Fields
 var log = logrus.New()
 var ljack *lumberjack.Logger
 var writer io.Writer
-var Event = nr.Event
+
+func Event(msg string, ctx logrus.Fields) {
+  Log().WithFields(ctx).Trace(msg)
+  nr.Event(msg, ctx)
+}
 
 func InitLog() {
   if len(conf.Logfile) > 0 {
@@ -96,26 +100,54 @@ func Trace(msg string, ctx ...logrus.Fields) {
   }
 }
 
-func Info(msg string) {
+func Info(msg string, ctx ...logrus.Fields) {
+  var c logrus.Fields
   if conf.Info {
-    params := map[string]interface{}{
-              "source":     "tsak",
-              "appname":    conf.Name,
-              "appID":      conf.ID,
+    if len(ctx) > 0 {
+      c = ctx[0]
+    } else {
+      c = logrus.Fields{}
     }
-    Log().WithFields(params).Info(msg)
+    Log().WithFields(c).Info(msg)
+    if conf.Nrapi != "" {
+      if conf.Production {
+        nr.Log(msg, "info", c)
+      }
+    }
   }
 }
 
-func Warning(msg string) {
+func Warning(msg string, ctx ...logrus.Fields) {
+  var c logrus.Fields
   if conf.Warning {
-    log.Warning(msg)
+    if len(ctx) > 0 {
+      c = ctx[0]
+    } else {
+      c = logrus.Fields{}
+    }
+    Log().WithFields(c).Warning(msg)
+    if conf.Nrapi != "" {
+      if conf.Production {
+        nr.Log(msg, "warning", c)
+      }
+    }
   }
 }
 
-func Error(msg string) {
+func Error(msg string, ctx ...logrus.Fields) {
+  var c logrus.Fields
   if conf.Error {
-    log.Error(msg)
+    if len(ctx) > 0 {
+      c = ctx[0]
+    } else {
+      c = logrus.Fields{}
+    }
+    Log().WithFields(c).Error(msg)
+    if conf.Nrapi != "" {
+      if conf.Production {
+        nr.Log(msg, "error", c)
+      }
+    }
   }
 }
 

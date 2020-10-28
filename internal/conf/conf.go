@@ -16,3 +16,8 @@ var Account string
 var Nrapi string
 var Logapi string
 var Evtapi string
+var In string
+var Proc string
+var Out string
+var Conf string
+var Run string
