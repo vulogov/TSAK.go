@@ -12,5 +12,7 @@ var Maxsize int
 var Maxage int
 var Name string
 var ID string
+var Account string
 var Nrapi string
 var Logapi string
+var Evtapi string

@@ -6,7 +6,8 @@ import (
   "os/signal"
   "syscall"
   "sync"
-  "github.com/vulogov/Ushell/internal/log"
+  "github.com/sirupsen/logrus"
+  "github.com/vulogov/TSAK/internal/log"
 )
 
 var wg sync.WaitGroup
@@ -74,4 +75,8 @@ func Release(n int) {
 func Loop() {
   wg.Wait()
   log.Shutdown()
+  log.Event("TsakEvent", logrus.Fields{
+    "event":    "Application exited",
+    "evtc":     0,
+  })
 }

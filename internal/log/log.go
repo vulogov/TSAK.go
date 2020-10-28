@@ -4,21 +4,18 @@ import (
   "fmt"
   "os"
   "io"
-  "context"
   "github.com/sirupsen/logrus"
   "gopkg.in/natefinch/lumberjack.v2"
-  "github.com/vulogov/Ushell/internal/conf"
-  "github.com/newrelic/go-agent/v3/integrations/nrlogrus"
-  "github.com/newrelic/go-agent/v3/integrations/logcontext/nrlogrusplugin"
-  newrelic "github.com/newrelic/go-agent/v3/newrelic"
-  //"github.com/vulogov/Ushell/internal/nr"
+  "github.com/vulogov/TSAK/internal/conf"
+  "github.com/vulogov/TSAK/internal/nr"
 )
 
+type Fields logrus.Fields
+
 var log = logrus.New()
-var slog = logrus.New()
-var app *newrelic.Application
 var ljack *lumberjack.Logger
 var writer io.Writer
+var Event = nr.Event
 
 func InitLog() {
   if len(conf.Logfile) > 0 {
@@ -28,38 +25,25 @@ func InitLog() {
       MaxAge:     conf.Maxage,
       Compress:   false,
     }
-    slog.SetFormatter(&logrus.JSONFormatter{})
-    slog.Level = logrus.TraceLevel
-    slog.SetOutput(os.Stdout)
-    if conf.Nrapi == "" {
-      if conf.Stdout {
-          writer = io.MultiWriter(os.Stdout, ljack)
-        } else {
-          writer = io.MultiWriter(ljack)
-        }
-      } else {
-        if conf.Stdout {
-          writer = io.MultiWriter(os.Stdout)
-        } else {
-          writer = io.MultiWriter()
-        }
-      }
-  }
-  if conf.Production {
-    if conf.Nrapi == "" {
-      log.SetFormatter(&logrus.JSONFormatter{})
-      log.Level = logrus.TraceLevel
-      log.SetOutput(writer)
+
+    if conf.Stdout {
+        writer = io.MultiWriter(os.Stdout, ljack)
     } else {
-      log.SetFormatter(nrlogrusplugin.ContextFormatter{})
-      app, _ = newrelic.NewApplication(
-        newrelic.ConfigAppName(conf.Name),
-        newrelic.ConfigLicense(conf.Nrapi),
-        nrlogrus.ConfigLogger(log),
-      )
+       writer = io.MultiWriter(ljack)
     }
   } else {
-    log.Formatter = new(logrus.TextFormatter)
+    if conf.Stdout {
+      writer = io.MultiWriter(os.Stdout)
+    } else {
+      writer = io.MultiWriter()
+    }
+  }
+  if conf.Production {
+    log.SetFormatter(&logrus.JSONFormatter{})
+    log.Level = logrus.TraceLevel
+    log.SetOutput(writer)
+  } else {
+    log.SetFormatter(&logrus.TextFormatter{})
     if conf.Nocolor {
       log.Formatter.(*logrus.TextFormatter).DisableColors = true
     } else {
@@ -89,31 +73,24 @@ func InitLog() {
   Trace(fmt.Sprintf("Maximum age of log file (days): %v", conf.Maxage))
   Trace(fmt.Sprintf("Application UUID %v", conf.ID))
   if conf.Nrapi != "" {
-    Trace(fmt.Sprintf("NRAPI %v", conf.Nrapi))
+    Trace(fmt.Sprintf("NRAPI Enabled"))
   }
   Trace("Log subsystem initialized")
 }
 
 
-func Trace(msg string) {
+func Trace(msg string, ctx ...logrus.Fields) {
+  var c logrus.Fields
   if conf.Debug {
-    params := map[string]interface{}{
-              "source":     "tsak",
-              "appname":    conf.Name,
-              "appID":      conf.ID,
-    }
-    if conf.Nrapi == "" {
-      Log().WithFields(params).Trace(msg)
+    if len(ctx) > 0 {
+      c = ctx[0]
     } else {
-      if conf.Nragent {
-        txn := app.StartTransaction("trace")
-        ctx := newrelic.NewContext(context.Background(), txn)
-        log.WithContext(ctx).WithFields(params).Trace(msg)
-        txn.End()
-      } else {
-        if conf.Stdout {
-          slog.WithFields(params).Trace(msg)
-        }
+      c = logrus.Fields{}
+    }
+    Log().WithFields(c).Trace(msg)
+    if conf.Nrapi != "" {
+      if conf.Production {
+        nr.Log(msg, "trace", c)
       }
     }
   }
@@ -147,7 +124,5 @@ func Log() *logrus.Logger {
 }
 
 func Shutdown() {
-  if conf.Nrapi != "" {
-    app.Shutdown(0)
-  }
+  Trace("Log subsystem shutodown")
 }
