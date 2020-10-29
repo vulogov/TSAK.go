@@ -13,7 +13,7 @@ import (
 
 var e = make(map[string]*env.Env)
 
-func Define(name string, key string, value string) {
+func Define(name string, key string, value interface{}) {
   err := e[name].Define(key, value)
   if err != nil {
     log.Error(fmt.Sprintf("Def(%[1]s) = %[2]s", key, err))
@@ -29,6 +29,10 @@ func InitScript() {
 
   for k := range env.Packages {
     log.Trace(fmt.Sprintf("Module: %[1]s", k))
+  }
+
+  for k, _ := range e {
+    Define(k, "ANSWER", 42)
   }
 
 }

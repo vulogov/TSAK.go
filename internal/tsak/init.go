@@ -1,6 +1,7 @@
 package tsak
 
 import (
+  "fmt"
   "flag"
   "os"
   "github.com/sirupsen/logrus"
@@ -9,6 +10,7 @@ import (
   "github.com/vulogov/TSAK/internal/signal"
   "github.com/vulogov/TSAK/internal/script"
   "github.com/google/uuid"
+  "github.com/erikdubbelboer/gspt"
 )
 
 func Init() {
@@ -35,6 +37,7 @@ func Init() {
   flag.StringVar(&conf.Run, "run", "", "Name of the exclusive run script (-in/-out/-proc will be ignored)")
   flag.StringVar(&conf.Conf, "conf", "", "Configuration file")
   flag.Parse()
+  gspt.SetProcTitle(fmt.Sprintf("TSAK: %s[%s]", conf.Name, conf.ID))
   log.InitLog()
   signal.InitSignal()
   script.InitScript()

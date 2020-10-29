@@ -5,6 +5,7 @@ go 1.15
 require (
 	github.com/BurntSushi/toml v0.3.1 // indirect
 	github.com/Jeffail/gabs v1.4.0
+	github.com/erikdubbelboer/gspt v0.0.0-20201015204752-6cb2489021da
 	github.com/google/uuid v1.1.2
 	github.com/goreleaser/goreleaser v0.146.0 // indirect
 	github.com/kr/text v0.2.0 // indirect

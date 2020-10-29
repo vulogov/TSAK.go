@@ -12,5 +12,6 @@ func init() {
     "Info":     reflect.ValueOf(log.Info),
     "Error":    reflect.ValueOf(log.Error),
     "Warning":  reflect.ValueOf(log.Warning),
+    "Event":    reflect.ValueOf(log.Event),
   }
 }
