@@ -14,6 +14,7 @@ require (
 	github.com/kr/text v0.2.0 // indirect
 	github.com/mattn/anko v0.1.8
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
+	github.com/pebbe/zmq4 v1.2.1
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/prometheus/procfs v0.0.0-20190507164030-5867b95ac084 // indirect
 	github.com/sirupsen/logrus v1.7.0
