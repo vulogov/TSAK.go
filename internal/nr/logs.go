@@ -9,6 +9,7 @@ import (
   "io/ioutil"
   "github.com/sirupsen/logrus"
   "github.com/vulogov/TSAK/internal/conf"
+  "github.com/vulogov/TSAK/internal/si"
   "github.com/Jeffail/gabs"
 )
 
@@ -16,6 +17,7 @@ func Log(msg string, logtype string, ctx logrus.Fields) {
   payload := gabs.New()
   payload.Set(conf.ID, "attributes", "applicationID")
   payload.Set(conf.Name, "attributes", "applicationName")
+  payload.Set(si.SysInfo().Hostname, "hostname")
   payload.Set("tsak", "attributes", "logSource")
   for key, value := range ctx {
     payload.Set(value, "attributes", key)

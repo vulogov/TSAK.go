@@ -9,6 +9,7 @@ import (
   "io/ioutil"
   "github.com/sirupsen/logrus"
   "github.com/vulogov/TSAK/internal/conf"
+  "github.com/vulogov/TSAK/internal/si"
   "github.com/Jeffail/gabs"
 )
 
@@ -18,6 +19,7 @@ func Event(evttype string, ctx logrus.Fields) {
   payload.Set(evttype, "eventType")
   payload.Set(conf.ID,  "applicationID")
   payload.Set(conf.Name,  "applicationName")
+  payload.Set(si.SysInfo().Hostname, "hostname")
   payload.Set("tsak", "evtSource")
   for key, value := range ctx {
     payload.Set(value, key)

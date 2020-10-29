@@ -4,7 +4,7 @@ import (
   "fmt"
   "io/ioutil"
   "github.com/vulogov/TSAK/internal/log"
-  // "github.com/vulogov/TSAK/internal/conf"
+  "github.com/vulogov/TSAK/internal/conf"
   "github.com/mattn/anko/env"
   _ "github.com/mattn/anko/packages"
   _ "github.com/vulogov/TSAK/packages"
@@ -33,6 +33,7 @@ func InitScript() {
 
   for k, _ := range e {
     Define(k, "ANSWER", 42)
+    Define(k, "ID", conf.ID)
   }
 
 }
