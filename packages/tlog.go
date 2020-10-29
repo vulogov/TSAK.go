@@ -2,6 +2,7 @@ package packages
 
 import (
   "github.com/vulogov/TSAK/internal/log"
+  "github.com/vulogov/TSAK/internal/nr"
   "reflect"
   "github.com/mattn/anko/env"
 )
@@ -13,5 +14,7 @@ func init() {
     "Error":    reflect.ValueOf(log.Error),
     "Warning":  reflect.ValueOf(log.Warning),
     "Event":    reflect.ValueOf(log.Event),
+    "SendEvent":reflect.ValueOf(nr.SendEvent),
+    "Metric":   reflect.ValueOf(log.Metric),
   }
 }

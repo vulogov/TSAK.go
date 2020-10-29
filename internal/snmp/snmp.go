@@ -44,7 +44,7 @@ func SYMBOL(oid string) string {
   for _, raw := range tmp {
     v, err := strconv.Atoi(raw)
     if err != nil {
-        log.Error(fmt.Sprintf("Error converting OID element %s: %s", oid, err))
+        // log.Error(fmt.Sprintf("Error converting OID element %s: %s", oid, err))
         continue
     }
     values = append(values, v)

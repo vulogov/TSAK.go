@@ -21,6 +21,10 @@ func Event(msg string, ctx logrus.Fields) {
   nr.Event(msg, ctx)
 }
 
+func Metric(mname string, _type string, value interface{}, ctx logrus.Fields) {
+  nr.Metric(mname, _type, value, ctx)
+}
+
 func InitLog() {
   if len(conf.Logfile) > 0 {
     ljack = &lumberjack.Logger{

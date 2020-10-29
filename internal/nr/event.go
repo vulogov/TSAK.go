@@ -30,6 +30,10 @@ func Event(evttype string, ctx logrus.Fields) {
   }
 }
 
+func SendEvent(_payload []byte) bool {
+  return event(conf.Nrapi, conf.Evtapi, _payload)
+}
+
 func event(nrikey, _url string, _payload []byte) bool {
   var b bytes.Buffer
   url := fmt.Sprintf(_url, conf.Account)
