@@ -3,6 +3,7 @@ package packages
 import (
   "time"
   "reflect"
+  "github.com/google/uuid"
   "github.com/mattn/anko/env"
   "github.com/erikdubbelboer/gspt"
   "github.com/vulogov/TSAK/internal/signal"
@@ -10,6 +11,11 @@ import (
 
 func NowMilliseconds() int64 {
     return time.Now().UnixNano() / int64(time.Millisecond)
+}
+
+func UUID() string {
+  uid, _ := uuid.NewUUID()
+  return uid.String()
 }
 
 func init() {
@@ -20,5 +26,6 @@ func init() {
     "ExitRequested":  reflect.ValueOf(signal.ExitRequested),
     "Release":        reflect.ValueOf(signal.Release),
     "NowMilliseconds":reflect.ValueOf(NowMilliseconds),
+    "UUID":           reflect.ValueOf(UUID),
   }
 }

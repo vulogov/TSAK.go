@@ -2,11 +2,12 @@ package tsak
 
 import (
   "sync"
-  // "github.com/sirupsen/logrus"
+  "github.com/sirupsen/logrus"
   "github.com/vulogov/TSAK/internal/log"
-  // "github.com/vulogov/TSAK/internal/conf"
+  "github.com/vulogov/TSAK/internal/script"
   "github.com/vulogov/TSAK/internal/signal"
   "github.com/vulogov/TSAK/internal/nr"
+  "github.com/vulogov/TSAK/internal/conf"
 )
 
 func ProcProc() {
@@ -20,5 +21,14 @@ func ProcProc() {
 }
 
 func procproc() {
-
+  if conf.Conf != "" {
+    res := script.RunScript("proc", conf.Conf)
+    log.Event(
+      "Bootstrap is loaded for Proc()",
+      logrus.Fields{
+        "result":     res,
+        "confSource": conf.Conf,
+    })
+  }
+  script.RunScript("proc", conf.Proc)
 }
