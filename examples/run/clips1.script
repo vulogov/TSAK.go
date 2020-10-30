@@ -1,3 +1,4 @@
 stdlib = import("stdlib")
 
-stdlib.To(stdlib.CLIPS, "(facts)")
+stdlib.To(stdlib.CLIPS, '(assert (answer 42))')
+stdlib.To(stdlib.CLIPS, '(facts)')
