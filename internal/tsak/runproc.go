@@ -16,6 +16,7 @@ func RunProc() {
     defer wg.Done()
     runproc()
     log.Trace("Run thread exiting")
+    signal.ExitRequest()
     nr.RecordDuration("Run() duration", start)
   }(signal.WG())
 }

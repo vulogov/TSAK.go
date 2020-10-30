@@ -9,6 +9,7 @@ import (
   "github.com/vulogov/TSAK/internal/conf"
   "github.com/vulogov/TSAK/internal/signal"
   "github.com/vulogov/TSAK/internal/script"
+  "github.com/vulogov/TSAK/internal/clips"
   "github.com/google/uuid"
   "github.com/erikdubbelboer/gspt"
 )
@@ -41,6 +42,7 @@ func Init() {
   log.InitLog()
   signal.InitSignal()
   script.InitScript()
+  clips.InitClips()
   log.Event("TsakEvent", logrus.Fields{
     "message":    "Application started",
     "evtc":       0,

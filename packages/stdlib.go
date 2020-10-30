@@ -37,6 +37,7 @@ func init() {
     "Len":            reflect.ValueOf(piping.Len),
     "INCH":           reflect.ValueOf(piping.INCH),
     "OUTCH":          reflect.ValueOf(piping.OUTCH),
+    "CLIPS":          reflect.ValueOf(piping.CLIPS),
     "String":         reflect.ValueOf(String),
   }
 }

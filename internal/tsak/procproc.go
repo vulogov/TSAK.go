@@ -16,6 +16,7 @@ func ProcProc() {
     defer wg.Done()
     procproc()
     log.Trace("Proc thread exiting")
+    signal.ExitRequest()
     nr.RecordDuration("Proc() duration", start)
   }(signal.WG())
 }

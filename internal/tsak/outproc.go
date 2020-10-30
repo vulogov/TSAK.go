@@ -16,6 +16,7 @@ func OutProc() {
     defer wg.Done()
     outproc()
     log.Trace("Out thread exiting")
+    signal.ExitRequest()
     nr.RecordDuration("Out() duration", start)
   }(signal.WG())
 }
