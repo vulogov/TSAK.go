@@ -21,6 +21,7 @@ func ReinitCLIPS() {
 func InitClips() {
   log.Trace("CLIPS module is Initializing")
   ReinitCLIPS()
+  InitFunctions()
   signal.Reserve(1)
   go func(wg *sync.WaitGroup) {
     var start = nr.NowMillisec()
@@ -42,8 +43,15 @@ func clipsproc() {
     time.Sleep(1*time.Second)
     for piping.Len(piping.CLIPS) > 0 {
       cmd := string(piping.From(piping.CLIPS))
-      env.SendCommand(cmd)
+      err := env.SendCommand(cmd)
       log.Trace(fmt.Sprintf("CLIPS: %v", cmd))
+      if err != nil {
+        log.Error(fmt.Sprintf("CLIPS.error: %v", err))
+      }
+      if cmd == "(clear)" {
+        log.Trace("Restoring TSAK CLIPS environment")
+        InitFunctions()
+      }
     }
   }
 }

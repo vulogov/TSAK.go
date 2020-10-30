@@ -1,0 +1,7 @@
+stdlib = import("stdlib")
+
+stdlib.To(stdlib.CLIPS, '(assert (now (Now)))')
+stdlib.To(stdlib.CLIPS, '(facts)')
+stdlib.To(stdlib.CLIPS, '(clear)')
+stdlib.To(stdlib.CLIPS, '(assert (now (Now)))')
+stdlib.To(stdlib.CLIPS, '(facts)')

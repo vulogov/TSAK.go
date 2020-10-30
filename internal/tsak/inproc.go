@@ -16,6 +16,7 @@ func InProc() {
     defer wg.Done()
     inproc()
     log.Trace("In thread exiting")
+    signal.ExitRequest()
     nr.RecordDuration("In() duration", start)
   }(signal.WG())
 }
