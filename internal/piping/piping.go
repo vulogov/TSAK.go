@@ -11,11 +11,14 @@ import (
 var INCH = 0
 var OUTCH = 1
 var CLIPS = 2
+var FACTS = 3
+
 
 
 var pipeIn = make(chan string, 1000000)
 var pipeOut = make(chan string, 1000000)
 var clipsIn = make(chan string, 1000000)
+var factsIn = make(chan string, 1000000)
 var zmqS = make(map[string]*zmq.Socket)
 
 var zmqCtx,_ = zmq.NewContext()
@@ -33,6 +36,9 @@ func To(dst int, _data []byte) {
   } else if dst == CLIPS {
     clipsIn <- data.String()
     log.Trace(fmt.Sprintf("%d element in pipeline CLIPS", len(clipsIn)))
+  } else if dst == FACTS {
+    factsIn <- data.String()
+    log.Trace(fmt.Sprintf("%d element in pipeline FACTS", len(factsIn)))
   } else {
     log.Error("Trying to send data to non-existent pipeline")
   }
@@ -45,6 +51,8 @@ func From(src int) []byte {
     return []byte(<-pipeOut)
   } else if src == CLIPS && len (clipsIn) > 0 {
     return []byte(<-clipsIn)
+  } else if src == FACTS && len (factsIn) > 0 {
+    return []byte(<-factsIn)
   } else {
     return []byte("")
   }
@@ -57,6 +65,8 @@ func Len(src int) int {
     return len(pipeOut)
   } else if src == CLIPS {
     return len(clipsIn)
+  } else if src == FACTS {
+    return len(factsIn)
   } else {
     return 0
   }

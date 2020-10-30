@@ -14,8 +14,8 @@ import (
 var env = clips.CreateEnvironment()
 
 func ReinitCLIPS() {
-  env.Reset()
   env.Clear()
+  env.Reset()
 }
 
 func InitClips() {
@@ -41,6 +41,15 @@ func clipsproc() {
   for ! signal.ExitRequested() && piping.Len(piping.CLIPS) == 0 {
     log.Trace("CLIPS server is cooling down")
     time.Sleep(1*time.Second)
+    for piping.Len(piping.FACTS) > 0 {
+      sfact := string(piping.From(piping.FACTS))
+      fact, err := env.AssertString(sfact)
+      if err != nil {
+        log.Error(fmt.Sprintf("CLIPS.fact.error: %v", err))
+      } else {
+        log.Trace(fmt.Sprintf("CLIPS.fact: %v", fact.String()))
+      }
+    }
     for piping.Len(piping.CLIPS) > 0 {
       cmd := string(piping.From(piping.CLIPS))
       err := env.SendCommand(cmd)
