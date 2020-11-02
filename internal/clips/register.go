@@ -21,5 +21,9 @@ func RegisterFunctions() {
   AddClipsFun("var", SetVarBind)
   AddClipsFun("getvar", GetVarBind)
   AddClipsFun("VAR", GetVarBindDef)
+  AddClipsFun("enablefactpipe", EnableFactPipe)
+  AddClipsFun("disablefactpipe", DisableFactPipe)
+  AddClipsFun("enablecmdpipe", EnableCmdPipe)
+  AddClipsFun("disablecmdpipe", DisableCmdPipe)
   RegisterVariables()
 }

@@ -41,25 +41,29 @@ func clipsproc() {
   for ! signal.ExitRequested() && piping.Len(piping.CLIPS) == 0 {
     log.Trace("CLIPS server is cooling down")
     time.Sleep(1*time.Second)
-    for piping.Len(piping.FACTS) > 0 {
-      sfact := string(piping.From(piping.FACTS))
-      fact, err := env.AssertString(sfact)
-      if err != nil {
-        log.Error(fmt.Sprintf("CLIPS.fact.error: %v", err))
-      } else {
-        log.Trace(fmt.Sprintf("CLIPS.fact: %v", fact.String()))
+    if DoFact {
+      for piping.Len(piping.FACTS) > 0 {
+        sfact := string(piping.From(piping.FACTS))
+        fact, err := env.AssertString(sfact)
+        if err != nil {
+          log.Error(fmt.Sprintf("CLIPS.fact.error: %v", err))
+        } else {
+          log.Trace(fmt.Sprintf("CLIPS.fact: %v", fact.String()))
+        }
       }
     }
-    for piping.Len(piping.CLIPS) > 0 {
-      cmd := string(piping.From(piping.CLIPS))
-      err := env.SendCommand(cmd)
-      log.Trace(fmt.Sprintf("CLIPS: %v", cmd))
-      if err != nil {
-        log.Error(fmt.Sprintf("CLIPS.error: %v", err))
-      }
-      if cmd == "(clear)" {
-        log.Trace("Restoring TSAK CLIPS environment")
-        InitFunctions()
+    if DoCmd {
+      for piping.Len(piping.CLIPS) > 0 {
+        cmd := string(piping.From(piping.CLIPS))
+        err := env.SendCommand(cmd)
+        log.Trace(fmt.Sprintf("CLIPS: %v", cmd))
+        if err != nil {
+          log.Error(fmt.Sprintf("CLIPS.error: %v", err))
+        }
+        if cmd == "(clear)" {
+          log.Trace("Restoring TSAK CLIPS environment")
+          InitFunctions()
+        }
       }
     }
   }
