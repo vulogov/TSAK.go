@@ -18,6 +18,10 @@ func ReinitCLIPS() {
   env.Reset()
 }
 
+func Env() *clips.Environment {
+  return env
+}
+
 func InitClips() {
   log.Trace("CLIPS module is Initializing")
   ReinitCLIPS()

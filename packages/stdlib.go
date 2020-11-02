@@ -39,6 +39,7 @@ func init() {
     "OUTCH":          reflect.ValueOf(piping.OUTCH),
     "CLIPS":          reflect.ValueOf(piping.CLIPS),
     "FACTS":          reflect.ValueOf(piping.FACTS),
+    "EVAL":           reflect.ValueOf(piping.EVAL),
     "String":         reflect.ValueOf(String),
   }
 }

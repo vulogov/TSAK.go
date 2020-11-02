@@ -11,6 +11,7 @@ func RegisterVariables() {
   GetVarBindDef(clips.Symbol("OUTCH"), 1)
   GetVarBindDef(clips.Symbol("CLIPS"), 2)
   GetVarBindDef(clips.Symbol("FACTS"), 3)
+  GetVarBindDef(clips.Symbol("EVAL"), 4)
   GetVarBindDef(clips.Symbol("Answer"), 42)
 }
 
