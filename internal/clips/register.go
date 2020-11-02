@@ -18,6 +18,7 @@ func RegisterFunctions() {
   log.Trace("CLIPS functions registering")
   AddClipsFun("Now", nr.NowMillisec)
   AddClipsFun("exportallfacts", ExportAllFacts)
+  AddClipsFun("exportassertedfacts", ExportAssertedFacts)
   AddClipsFun("var", SetVarBind)
   AddClipsFun("getvar", GetVarBind)
   AddClipsFun("VAR", GetVarBindDef)
