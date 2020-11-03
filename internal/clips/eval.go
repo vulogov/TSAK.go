@@ -25,3 +25,12 @@ func EvalClips(ch int, name string, fun string) bool {
   piping.To(ch, []byte(_out.String()))
   return true
 }
+
+func EvalRet(fun string) interface{} {
+  ret, err := Env().Eval(fun)
+  if err != nil {
+    log.Error(fmt.Sprintf("CLIPS.eval.error = %v", err))
+    return false
+  }
+  return ret
+}

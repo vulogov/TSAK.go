@@ -18,6 +18,7 @@ require (
 	github.com/mattn/go-colorable v0.1.7 // indirect
 	github.com/niemeyer/pretty v0.0.0-20200227124842-a10e7caefd8e // indirect
 	github.com/pebbe/zmq4 v1.2.1
+	github.com/prologic/bitcask v0.3.6 // indirect
 	github.com/prometheus/procfs v0.0.0-20190507164030-5867b95ac084 // indirect
 	github.com/sergi/go-diff v1.1.0 // indirect
 	github.com/sirupsen/logrus v1.7.0

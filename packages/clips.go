@@ -9,5 +9,6 @@ import (
 func init() {
   env.Packages["clips"] = map[string]reflect.Value{
     "Eval":               reflect.ValueOf(clips.EvalClips),
+    "eval":               reflect.ValueOf(clips.EvalRet),
   }
 }
