@@ -11,6 +11,7 @@ func Fin() {
   piping.Shutdown()
   clips.Shutdown()
   log.Shutdown()
+  HouseShutdown()
   log.Event("TsakEvent", logrus.Fields{
     "message":    "Application exited",
     "evtc":       1,

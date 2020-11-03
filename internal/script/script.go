@@ -26,6 +26,7 @@ func InitScript() {
   e["in"] = env.NewEnv()
   e["proc"] = env.NewEnv()
   e["out"] = env.NewEnv()
+  e["house"] = env.NewEnv()
 
   for k := range env.Packages {
     log.Trace(fmt.Sprintf("Module: %[1]s", k))

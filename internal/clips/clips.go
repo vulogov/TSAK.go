@@ -43,7 +43,6 @@ func Shutdown() {
 
 func clipsproc() {
   for ! signal.ExitRequested() && piping.Len(piping.CLIPS) == 0 {
-    log.Trace("CLIPS server is cooling down")
     time.Sleep(1*time.Second)
     if DoFact {
       for piping.Len(piping.FACTS) > 0 {

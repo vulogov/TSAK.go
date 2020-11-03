@@ -21,3 +21,4 @@ var Proc string
 var Out string
 var Conf string
 var Run string
+var House string

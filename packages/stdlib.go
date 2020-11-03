@@ -8,6 +8,7 @@ import (
   "github.com/erikdubbelboer/gspt"
   "github.com/vulogov/TSAK/internal/signal"
   "github.com/vulogov/TSAK/internal/piping"
+  "github.com/vulogov/TSAK/internal/cron"
 )
 
 func NowMilliseconds() int64 {
@@ -31,6 +32,7 @@ func init() {
     "ExitRequested":  reflect.ValueOf(signal.ExitRequested),
     "Release":        reflect.ValueOf(signal.Release),
     "NowMilliseconds":reflect.ValueOf(NowMilliseconds),
+    "Cron":           reflect.ValueOf(cron.AddToCron),
     "UUID":           reflect.ValueOf(UUID),
     "From":           reflect.ValueOf(piping.From),
     "To":             reflect.ValueOf(piping.To),

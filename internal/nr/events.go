@@ -27,3 +27,16 @@ func RecordEvidence(msg string) {
     "function":   fun,
   })
 }
+
+func RecordValue(name string, msg string, value interface{}) {
+  fn, line, fun := Trace()
+  Event("TsakEvent", logrus.Fields{
+    "message":    msg,
+    "name":       name,
+    "value":      value,
+    "evtc":       5,
+    "source":     fn,
+    "line":       line,
+    "function":   fun,
+  })
+}
