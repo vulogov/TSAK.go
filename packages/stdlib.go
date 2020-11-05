@@ -9,6 +9,7 @@ import (
   "github.com/vulogov/TSAK/internal/signal"
   "github.com/vulogov/TSAK/internal/piping"
   "github.com/vulogov/TSAK/internal/cron"
+  "github.com/vulogov/TSAK/internal/nr"
 )
 
 func NowMilliseconds() int64 {
@@ -43,5 +44,6 @@ func init() {
     "FACTS":          reflect.ValueOf(piping.FACTS),
     "EVAL":           reflect.ValueOf(piping.EVAL),
     "String":         reflect.ValueOf(String),
+    "Query":          reflect.ValueOf(nr.Query),
   }
 }

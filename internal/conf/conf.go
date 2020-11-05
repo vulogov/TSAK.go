@@ -14,8 +14,10 @@ var Name string
 var ID string
 var Account string
 var Nrapi string
+var Nrapiq string
 var Logapi string
 var Evtapi string
+var Queryapi string
 var In string
 var Proc string
 var Out string
