@@ -13,13 +13,14 @@ import (
   "github.com/vulogov/TSAK/internal/cron"
 )
 
-var HOUSE_EVERY = (10 * time.Second)
+var HOUSE_EVERY = (1 * time.Second)
+var REPORT_EVERY = 15
 
 func HouseProc() {
   var start = nr.NowMillisec()
+  cron.Start()
   go func(wg *sync.WaitGroup) {
     defer wg.Done()
-    cron.Start()
     housekeeper()
     log.Trace("Housekeeper thread exiting")
     signal.ExitRequest()
@@ -42,11 +43,18 @@ func housekeeper() {
         "confSource": conf.Conf,
     })
   }
+  c := 0
   for ! signal.ExitRequested() {
     time.Sleep(HOUSE_EVERY)
-    housekeeperReport()
-    if conf.House != "" {
-      script.RunScript("house", conf.House)
+    if c > REPORT_EVERY {
+      log.Trace("Running housekeeper")
+      housekeeperReport()
+      if conf.House != "" {
+        script.RunScript("house", conf.House)
+      }
+      c = 0
+    } else {
+      c += 1
     }
   }
   signal.ExitRequest()
