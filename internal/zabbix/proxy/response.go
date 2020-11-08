@@ -188,3 +188,16 @@ func (response *ProxyConfigResponse) GetHosts() (hosts map[float64]Host) {
 	}
 	return hosts
 }
+
+func (response *ProxyConfigResponse) DiscoverHosts() (hosts map[uint64][]interface{}, items map[uint64][]interface{}) {
+	hosts = make(map[uint64][]interface{})
+	items = make(map[uint64][]interface{})
+	for _, i := range response.Items.Data {
+		item := i.([]interface{})
+		items[uint64(item[0].(float64))] = item
+	}
+	for _, d := range response.Hosts.Data {
+		hosts[uint64(d[0].(float64))] = d
+	}
+	return
+}

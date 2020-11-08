@@ -100,10 +100,30 @@ func (proxy *Proxy) GetConfig() (config *ProxyConfig, err error) {
 	return
 }
 
+func (proxy *Proxy) DiscoverConfig() (config *ProxyConfigDiscovered, err error) {
+	packet := proxy.NewGenericPacket(`proxy config`, 0)
+
+	var res []byte
+	res, err = proxy.Client.Send(packet)
+	if err != nil {
+		return
+	}
+
+	config, err = NewProxyConfigDiscover(res)
+	return
+}
+
 // ProxyConfig
 type ProxyConfig struct {
 	Hosts map[float64]Host
 }
+
+type ProxyConfigDiscovered struct {
+	Data  []byte
+	Hosts map[uint64][]interface{}
+	Items map[uint64][]interface{}
+}
+
 
 // ProxyConfig contructor.
 func NewProxyConfig(res []uint8) (pc *ProxyConfig, err error) {
@@ -114,6 +134,20 @@ func NewProxyConfig(res []uint8) (pc *ProxyConfig, err error) {
 
 	pc = &ProxyConfig{
 		Hosts: response.GetHosts(),
+	}
+	return
+}
+
+func NewProxyConfigDiscover(res []uint8) (pc *ProxyConfigDiscovered, err error) {
+	response, err := NewProxyConfigResponse(res)
+	if err != nil {
+		return
+	}
+	hosts, items := response.DiscoverHosts()
+	pc = &ProxyConfigDiscovered{
+		Hosts: hosts,
+		Items: items,
+		Data:  []byte(res),
 	}
 	return
 }

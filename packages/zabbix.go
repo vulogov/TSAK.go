@@ -15,5 +15,6 @@ func init() {
     "ProxyConfig":          reflect.TypeOf(zbxproxy.ProxyConfig{}),
     "ProxyResponse":        reflect.TypeOf(zbxproxy.ProxyResponse{}),
     "ProxyConfigResponse":  reflect.TypeOf(zbxproxy.ProxyConfigResponse{}),
+    "ProxyConfigDiscovered":  reflect.TypeOf(zbxproxy.ProxyConfigDiscovered{}),
   }
 }

@@ -25,6 +25,7 @@ func String(src []byte) string {
   return string(src)
 }
 
+
 func init() {
   env.Packages["stdlib"] = map[string]reflect.Value{
     "Answer":         reflect.ValueOf(42),
