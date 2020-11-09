@@ -23,8 +23,13 @@ func init() {
     "LoadModule": reflect.ValueOf(snmp.LoadModule),
     "OID":        reflect.ValueOf(snmp.OID),
     "SYMBOL":     reflect.ValueOf(snmp.SYMBOL),
+    "Client":     reflect.ValueOf(snmplib.NewSNMP),
+    "SNMPv1":     reflect.ValueOf(snmplib.SNMPv1),
+    "SNMPv2c":    reflect.ValueOf(snmplib.SNMPv2c),
+    "SNMPv3":     reflect.ValueOf(snmplib.SNMPv3),
+    "ParseOID":   reflect.ValueOf(snmplib.MustParseOid),
   }
   env.PackageTypes["snmp"] = map[string]reflect.Type{
-
+    "SNMP":          reflect.TypeOf(snmplib.SNMP{}),
   }
 }

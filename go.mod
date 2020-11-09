@@ -7,11 +7,13 @@ require (
 	github.com/deejross/go-snmplib v0.0.0-20190126151901-0ff3fc321a43
 	github.com/elastic/go-sysinfo v1.4.0
 	github.com/erikdubbelboer/gspt v0.0.0-20201015204752-6cb2489021da
+	github.com/geoffgarside/ber v1.1.0 // indirect
 	github.com/gofrs/flock v0.8.0 // indirect
 	github.com/google/go-cmp v0.5.2 // indirect
 	github.com/google/uuid v1.1.2
 	github.com/goreleaser/goreleaser v0.146.0 // indirect
 	github.com/hallidave/mibtool v0.2.0
+	github.com/k-sone/snmpgo v3.2.0+incompatible
 	github.com/keysight/clipsgo v0.0.0-20200916214512-ed6292fa672e
 	github.com/kr/text v0.2.0 // indirect
 	github.com/mattn/anko v0.1.8
