@@ -5,6 +5,7 @@ go 1.15
 require (
 	github.com/Jeffail/gabs v1.4.0
 	github.com/deejross/go-snmplib v0.0.0-20190126151901-0ff3fc321a43
+	github.com/dspinhirne/netaddr-go v0.0.0-20200114144454-1f4c8303963f
 	github.com/elastic/go-sysinfo v1.4.0
 	github.com/erikdubbelboer/gspt v0.0.0-20201015204752-6cb2489021da
 	github.com/geoffgarside/ber v1.1.0 // indirect
