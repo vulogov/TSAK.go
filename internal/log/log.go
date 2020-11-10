@@ -96,9 +96,11 @@ func Trace(msg string, ctx ...logrus.Fields) {
       c = logrus.Fields{}
     }
     Log().WithFields(c).Trace(msg)
-    if conf.Nrapi != "" {
-      if conf.Production {
-        nr.Log(msg, "trace", c)
+    if conf.TraceNR {
+      if conf.Nrapi != "" {
+        if conf.Production {
+          nr.Log(msg, "trace", c)
+        }
       }
     }
   }

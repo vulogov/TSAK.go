@@ -22,6 +22,7 @@ func Init() {
   flag.BoolVar(&conf.Warning, "warning", false, "Enable WARNING outpout")
   flag.BoolVar(&conf.Info, "info", false, "Enable INFO outpout")
   flag.BoolVar(&conf.Stdout, "stdout", false, "Send log entries to /dev/stdout as well")
+  flag.BoolVar(&conf.TraceNR, "tracenr", false, "Send TSAK traces as logs to New Relic")
   flag.BoolVar(&conf.Production, "production", false, "Running Ushell in production mode")
   flag.StringVar(&conf.Nrapi, "nrapi", os.Getenv("NEW_RELIC_LICENSE_KEY"), "New Relic API key")
   flag.StringVar(&conf.Nrapiq, "nrapiq", os.Getenv("NEW_RELIC_Q_LICENSE_KEY"), "New Relic Query API key")

@@ -7,6 +7,7 @@ var Warning bool
 var Production bool
 var Nocolor bool
 var Stdout bool
+var TraceNR bool
 var Logfile string
 var Maxsize int
 var Maxage int
