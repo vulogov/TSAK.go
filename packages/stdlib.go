@@ -3,6 +3,7 @@ package packages
 import (
   "time"
   "reflect"
+  "strconv"
   "github.com/google/uuid"
   "github.com/mattn/anko/env"
   "github.com/erikdubbelboer/gspt"
@@ -25,6 +26,14 @@ func String(src []byte) string {
   return string(src)
 }
 
+func Int(n string) int32 {
+  res, err := strconv.Atoi(n)
+  if err != nil {
+    return 0
+  } else {
+    return int32(res)
+  }
+}
 
 func init() {
   env.Packages["stdlib"] = map[string]reflect.Value{
@@ -46,5 +55,6 @@ func init() {
     "EVAL":           reflect.ValueOf(piping.EVAL),
     "String":         reflect.ValueOf(String),
     "Query":          reflect.ValueOf(nr.Query),
+    "Int":            reflect.ValueOf(Int),
   }
 }
