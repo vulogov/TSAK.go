@@ -22,6 +22,7 @@ func init() {
     "Number":                 reflect.ValueOf(faker.Number),
     "PhoneNumber":            reflect.ValueOf(faker.PhoneNumber),
     "Time":                   reflect.ValueOf(faker.Time),
+    "Finance":                reflect.ValueOf(faker.Finance),
   }
   env.PackageTypes["faker"] = map[string]reflect.Type{
 
