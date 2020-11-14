@@ -1,0 +1,26 @@
+package packages
+
+import (
+  "reflect"
+  "github.com/mattn/anko/env"
+  "github.com/trivago/grok"
+)
+
+func New(p map[string]string) (*grok.Grok, error) {
+  g, err := grok.New(
+    grok.Config{
+      NamedCapturesOnly: true,
+      Patterns: p,
+  })
+  return g, err
+}
+
+
+func init() {
+  env.Packages["grok"] = map[string]reflect.Value{
+    "New":             reflect.ValueOf(New),
+  }
+  env.PackageTypes["grok"] = map[string]reflect.Type{
+    "Grok":          reflect.TypeOf(grok.Grok{}),
+  }
+}
