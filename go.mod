@@ -3,6 +3,7 @@ module github.com/vulogov/TSAK
 go 1.15
 
 require (
+	cloud.google.com/go v0.58.0 // indirect
 	github.com/Jeffail/gabs v1.4.0
 	github.com/deejross/go-snmplib v0.0.0-20190126151901-0ff3fc321a43
 	github.com/dspinhirne/netaddr-go v0.0.0-20200114144454-1f4c8303963f
@@ -24,11 +25,13 @@ require (
 	github.com/pebbe/zmq4 v1.2.1
 	github.com/prologic/bitcask v0.3.6
 	github.com/robfig/cron v1.2.0
+	github.com/rocketlaunchr/dataframe-go v0.0.0-20201007021539-67b046771f0b
 	github.com/sergi/go-diff v1.1.0 // indirect
 	github.com/sirupsen/logrus v1.7.0
 	github.com/trivago/grok v1.0.0
 	github.com/trivago/tgo v1.0.7 // indirect
 	golang.org/x/net v0.0.0-20201031054903-ff519b6c9102
+	golang.org/x/sync v0.0.0-20200625203802-6e8e738ad208 // indirect
 	golang.org/x/sys v0.0.0-20201109165425-215b40eba54c
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	gopkg.in/check.v1 v1.0.0-20200227125254-8fa46927fb4f // indirect
