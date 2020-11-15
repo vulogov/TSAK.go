@@ -41,6 +41,7 @@ func Init() {
   flag.StringVar(&conf.Run, "run", "", "Name of the exclusive run script (-in/-out/-proc will be ignored)")
   flag.StringVar(&conf.Conf, "conf", "", "Configuration file")
   flag.StringVar(&conf.House, "housekeeper", "", "Housekeeper periodic script")
+  flag.StringVar(&conf.Clips, "clips", "", "Name of non-exclusive main script executed in CLIPS environment")
   flag.Parse()
   gspt.SetProcTitle(fmt.Sprintf("TSAK: %s[%s]", conf.Name, conf.ID))
   log.InitLog()

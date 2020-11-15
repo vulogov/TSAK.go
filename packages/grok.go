@@ -17,10 +17,10 @@ func New(p map[string]string) (*grok.Grok, error) {
 
 
 func init() {
-  env.Packages["grok"] = map[string]reflect.Value{
+  env.Packages["parse/grok"] = map[string]reflect.Value{
     "New":             reflect.ValueOf(New),
   }
-  env.PackageTypes["grok"] = map[string]reflect.Type{
+  env.PackageTypes["parse/grok"] = map[string]reflect.Type{
     "Grok":          reflect.TypeOf(grok.Grok{}),
   }
 }

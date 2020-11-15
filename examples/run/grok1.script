@@ -1,5 +1,5 @@
 fmt = import("fmt")
-grok = import("grok")
+grok = import("parse/grok")
 
 
 parser, err = grok.New(map[string]string{

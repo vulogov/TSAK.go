@@ -1,8 +1,9 @@
 package tsak
 
 import (
+  "fmt"
   "github.com/vulogov/TSAK/internal/nr"
-  // "github.com/vulogov/TSAK/internal/log"
+  "github.com/vulogov/TSAK/internal/piping"
   "github.com/vulogov/TSAK/internal/conf"
   "github.com/vulogov/TSAK/internal/signal"
 )
@@ -29,6 +30,10 @@ func Run() {
       nr.RecordEvidence("Running Proc() code")
       signal.Reserve(1)
       OutProc()
+    }
+    if conf.Clips != "" {
+      nr.RecordEvidence("Running Clips() code as Main")
+      piping.To(piping.CLIPS, []byte(fmt.Sprintf(`(batch* "%s")`, conf.Clips)))
     }
   }
   nr.RecordEvidence("Running Housekeeping() code")

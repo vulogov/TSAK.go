@@ -5,6 +5,7 @@ import (
     "sync"
     "fmt"
     "github.com/keysight/clipsgo/pkg/clips"
+    "github.com/vulogov/TSAK/internal/conf"
     "github.com/vulogov/TSAK/internal/log"
     "github.com/vulogov/TSAK/internal/signal"
     "github.com/vulogov/TSAK/internal/nr"
@@ -66,6 +67,10 @@ func clipsproc() {
         if cmd == "(clear)" {
           log.Trace("Restoring TSAK CLIPS environment")
           InitFunctions()
+        }
+        if conf.Clips != "" {
+          log.Trace("Main CLIPS script exit.")
+          signal.ExitRequest()
         }
       }
     }
