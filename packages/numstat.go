@@ -8,11 +8,14 @@ import (
 
 func init() {
   env.Packages["num/stat"] = map[string]reflect.Value{
+    "Bhattacharyya":                reflect.ValueOf(stat.Bhattacharyya),
+    "ChiSquare":                    reflect.ValueOf(stat.ChiSquare),
     "CircularMean":                 reflect.ValueOf(stat.CircularMean),
     "Correlation":                  reflect.ValueOf(stat.Correlation),
     "Covariance":                   reflect.ValueOf(stat.Covariance),
     "CrossEntropy":                 reflect.ValueOf(stat.CrossEntropy),
     "Entropy":                      reflect.ValueOf(stat.Entropy),
+    "ExKurtosis":                   reflect.ValueOf(stat.ExKurtosis),
     "GeometricMean":                reflect.ValueOf(stat.GeometricMean),
     "HarmonicMean":                 reflect.ValueOf(stat.HarmonicMean),
     "Hellinger":                    reflect.ValueOf(stat.Hellinger),
