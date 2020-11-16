@@ -6,7 +6,7 @@ import (
   "github.com/trivago/grok"
 )
 
-func New(p map[string]string) (*grok.Grok, error) {
+func GrokNew(p map[string]string) (*grok.Grok, error) {
   g, err := grok.New(
     grok.Config{
       NamedCapturesOnly: true,
@@ -18,7 +18,7 @@ func New(p map[string]string) (*grok.Grok, error) {
 
 func init() {
   env.Packages["parse/grok"] = map[string]reflect.Value{
-    "New":             reflect.ValueOf(New),
+    "New":             reflect.ValueOf(GrokNew),
   }
   env.PackageTypes["parse/grok"] = map[string]reflect.Type{
     "Grok":          reflect.TypeOf(grok.Grok{}),

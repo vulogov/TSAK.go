@@ -27,6 +27,10 @@ func RegisterFunctions() {
   AddClipsFun("disablefactpipe", DisableFactPipe)
   AddClipsFun("enablecmdpipe", EnableCmdPipe)
   AddClipsFun("disablecmdpipe", DisableCmdPipe)
-  AddClipsFun("trace", log.Trace)
+  AddClipsFun("trace",    log.Trace)
+  AddClipsFun("info",     log.Info)
+  AddClipsFun("warning",  log.Warning)
+  AddClipsFun("error",    log.Error)
+
   RegisterVariables()
 }
