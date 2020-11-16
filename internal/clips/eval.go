@@ -3,10 +3,10 @@ package clips
 import (
   "fmt"
   "github.com/Jeffail/gabs"
-  "github.com/vulogov/TSAK/internal/log"
-  "github.com/vulogov/TSAK/internal/nr"
-  "github.com/vulogov/TSAK/internal/si"
-  "github.com/vulogov/TSAK/internal/piping"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/nr"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/si"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/piping"
 )
 
 func EvalClips(ch int, name string, fun string) bool {

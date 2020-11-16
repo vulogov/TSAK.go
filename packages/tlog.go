@@ -1,8 +1,8 @@
 package packages
 
 import (
-  "github.com/vulogov/TSAK/internal/log"
-  "github.com/vulogov/TSAK/internal/nr"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/nr"
   "reflect"
   "github.com/mattn/anko/env"
 )

@@ -3,8 +3,8 @@ package clips
 import (
     "fmt"
     "github.com/keysight/clipsgo/pkg/clips"
-    "github.com/vulogov/TSAK/internal/log"
-    "github.com/vulogov/TSAK/internal/piping"
+    "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
+    "github.com/newrelic-experimental/newrelic-TSAK/internal/piping"
     "github.com/Jeffail/gabs"
 )
 

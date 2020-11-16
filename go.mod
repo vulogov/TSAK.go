@@ -1,4 +1,4 @@
-module github.com/vulogov/TSAK
+module github.com/newrelic-experimental/newrelic-TSAK
 
 go 1.15
 

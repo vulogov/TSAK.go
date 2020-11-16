@@ -8,8 +8,8 @@ import (
   "time"
   "io/ioutil"
   "github.com/sirupsen/logrus"
-  "github.com/vulogov/TSAK/internal/conf"
-  "github.com/vulogov/TSAK/internal/si"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/si"
   "github.com/Jeffail/gabs"
 )
 

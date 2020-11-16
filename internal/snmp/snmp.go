@@ -5,7 +5,7 @@ import (
   "strings"
   "strconv"
   "github.com/hallidave/mibtool/smi"
-  "github.com/vulogov/TSAK/internal/log"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
 )
 
 var mibs *smi.MIB

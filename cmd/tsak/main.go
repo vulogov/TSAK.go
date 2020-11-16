@@ -1,7 +1,7 @@
 package main
 
 import (
-  "github.com/vulogov/TSAK/internal/tsak"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/tsak"
 )
 
 func main() {

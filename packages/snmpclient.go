@@ -2,7 +2,7 @@ package packages
 
 import (
   "fmt"
-  "github.com/vulogov/TSAK/internal/log"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
   "github.com/k-sone/snmpgo"
   "reflect"
   "github.com/mattn/anko/env"

@@ -2,7 +2,7 @@ package clips
 
 import (
     "fmt"
-    "github.com/vulogov/TSAK/internal/log"
+    "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
     "github.com/keysight/clipsgo/pkg/clips"
 )
 

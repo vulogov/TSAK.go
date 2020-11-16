@@ -1,7 +1,7 @@
 package tsak
 
 import (
-  "github.com/vulogov/TSAK/internal/signal"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/signal"
 )
 
 func TSAK() {

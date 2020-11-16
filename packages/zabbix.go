@@ -3,7 +3,7 @@ package packages
 import (
   "reflect"
   "github.com/mattn/anko/env"
-  zbxproxy "github.com/vulogov/TSAK/internal/zabbix/proxy"
+  zbxproxy "github.com/newrelic-experimental/newrelic-TSAK/internal/zabbix/proxy"
 )
 
 func init() {

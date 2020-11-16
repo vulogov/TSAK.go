@@ -6,8 +6,8 @@ import (
   "io"
   "github.com/sirupsen/logrus"
   "gopkg.in/natefinch/lumberjack.v2"
-  "github.com/vulogov/TSAK/internal/conf"
-  "github.com/vulogov/TSAK/internal/nr"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/nr"
 )
 
 type Fields logrus.Fields

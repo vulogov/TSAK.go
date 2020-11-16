@@ -4,7 +4,7 @@ import (
   "github.com/elastic/go-sysinfo/types"
   "reflect"
   "github.com/mattn/anko/env"
-  "github.com/vulogov/TSAK/internal/si"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/si"
 )
 
 

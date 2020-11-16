@@ -3,7 +3,7 @@ package packages
 import (
   "reflect"
   "github.com/mattn/anko/env"
-  "github.com/vulogov/TSAK/internal/clips"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/clips"
 )
 
 func init() {

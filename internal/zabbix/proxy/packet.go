@@ -4,7 +4,7 @@ package proxy
 import (
 	// "fmt"
 	"encoding/json"
-	"github.com/vulogov/TSAK/internal/zabbix/client"
+	"github.com/newrelic-experimental/newrelic-TSAK/internal/zabbix/client"
 	"time"
 )
 

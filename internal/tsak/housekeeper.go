@@ -4,13 +4,13 @@ import (
   "sync"
   "time"
   "github.com/sirupsen/logrus"
-  "github.com/vulogov/TSAK/internal/log"
-  "github.com/vulogov/TSAK/internal/signal"
-  "github.com/vulogov/TSAK/internal/nr"
-  "github.com/vulogov/TSAK/internal/piping"
-  "github.com/vulogov/TSAK/internal/script"
-  "github.com/vulogov/TSAK/internal/conf"
-  "github.com/vulogov/TSAK/internal/cron"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/signal"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/nr"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/piping"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/script"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/cron"
 )
 
 var HOUSE_EVERY = (1 * time.Second)

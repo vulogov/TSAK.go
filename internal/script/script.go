@@ -3,11 +3,11 @@ package script
 import (
   "fmt"
   "io/ioutil"
-  "github.com/vulogov/TSAK/internal/log"
-  "github.com/vulogov/TSAK/internal/conf"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
   "github.com/mattn/anko/env"
   _ "github.com/mattn/anko/packages"
-  _ "github.com/vulogov/TSAK/packages"
+  _ "github.com/newrelic-experimental/newrelic-TSAK/packages"
 	"github.com/mattn/anko/vm"
 )
 

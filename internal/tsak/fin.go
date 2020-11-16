@@ -2,9 +2,9 @@ package tsak
 
 import (
   "github.com/sirupsen/logrus"
-  "github.com/vulogov/TSAK/internal/log"
-  "github.com/vulogov/TSAK/internal/piping"
-  "github.com/vulogov/TSAK/internal/clips"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/piping"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/clips"
 )
 
 func Fin() {

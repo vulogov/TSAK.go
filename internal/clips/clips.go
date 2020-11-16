@@ -5,11 +5,11 @@ import (
     "sync"
     "fmt"
     "github.com/keysight/clipsgo/pkg/clips"
-    "github.com/vulogov/TSAK/internal/conf"
-    "github.com/vulogov/TSAK/internal/log"
-    "github.com/vulogov/TSAK/internal/signal"
-    "github.com/vulogov/TSAK/internal/nr"
-    "github.com/vulogov/TSAK/internal/piping"
+    "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
+    "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
+    "github.com/newrelic-experimental/newrelic-TSAK/internal/signal"
+    "github.com/newrelic-experimental/newrelic-TSAK/internal/nr"
+    "github.com/newrelic-experimental/newrelic-TSAK/internal/piping"
 )
 
 var env = clips.CreateEnvironment()

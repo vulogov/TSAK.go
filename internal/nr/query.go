@@ -5,7 +5,7 @@ import (
   "net/http"
   "net/url"
   "io/ioutil"
-  "github.com/vulogov/TSAK/internal/conf"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
   "github.com/Jeffail/gabs"
 )
 

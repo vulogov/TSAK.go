@@ -3,7 +3,7 @@ package packages
 import (
   "reflect"
   "github.com/mattn/anko/env"
-  bp "github.com/vulogov/TSAK/internal/binary_pack"
+  bp "github.com/newrelic-experimental/newrelic-TSAK/internal/binary_pack"
 )
 
 func BinparseNew() *bp.BinaryPack {

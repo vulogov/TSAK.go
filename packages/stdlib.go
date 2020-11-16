@@ -7,10 +7,10 @@ import (
   "github.com/google/uuid"
   "github.com/mattn/anko/env"
   "github.com/erikdubbelboer/gspt"
-  "github.com/vulogov/TSAK/internal/signal"
-  "github.com/vulogov/TSAK/internal/piping"
-  "github.com/vulogov/TSAK/internal/cron"
-  "github.com/vulogov/TSAK/internal/nr"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/signal"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/piping"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/cron"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/nr"
 )
 
 func NowMilliseconds() int64 {

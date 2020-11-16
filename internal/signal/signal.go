@@ -6,7 +6,7 @@ import (
   "os/signal"
   "syscall"
   "sync"
-  "github.com/vulogov/TSAK/internal/log"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
 )
 
 var wg sync.WaitGroup

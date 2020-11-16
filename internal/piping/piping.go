@@ -3,8 +3,8 @@ package piping
 import (
   "fmt"
   "bytes"
-  "github.com/vulogov/TSAK/internal/log"
-  // "github.com/vulogov/TSAK/internal/conf"
+  "github.com/newrelic-experimental/newrelic-TSAK/internal/log"
+  // "github.com/newrelic-experimental/newrelic-TSAK/internal/conf"
   zmq "github.com/pebbe/zmq4"
 )
 
