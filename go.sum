@@ -370,8 +370,8 @@ github.com/goreleaser/chglog v0.1.2 h1:tdzAb/ILeMnphzI9zQ7Nkq+T8R9qyXli8GydD8plF
 github.com/goreleaser/chglog v0.1.2/go.mod h1:tTZsFuSZK4epDXfjMkxzcGbrIOXprf0JFp47BjIr3B8=
 github.com/goreleaser/fileglob v0.3.0 h1:ef5bTud50fxihAjR2IWP0lGpyaPOgCD5qWfo14azJyI=
 github.com/goreleaser/fileglob v0.3.0/go.mod h1:kNcPrPzjCp+Ox3jmXLU5QEsjhqrtLBm6OnXAif8KRl8=
-github.com/goreleaser/goreleaser v0.147.1 h1:sGrZNjBiG6oCnbMb0MIj5hwtIVyunWz4JpXuyN7FaJk=
-github.com/goreleaser/goreleaser v0.147.1/go.mod h1:AkI3X+mBaAEc99RDZgUGvjbUEqh/+t+EjNMaqUbd+3w=
+github.com/goreleaser/goreleaser v0.147.2 h1:5afh3TsLEA6WemlBeUGOu0r6+AA9XA55Y9M0igV4kN8=
+github.com/goreleaser/goreleaser v0.147.2/go.mod h1:AkI3X+mBaAEc99RDZgUGvjbUEqh/+t+EjNMaqUbd+3w=
 github.com/goreleaser/nfpm v1.10.1 h1:v8CQ9Xe+1DLYkns2g0uAgQ/pCn5qs4/iBWWk1UDV6BA=
 github.com/goreleaser/nfpm v1.10.1/go.mod h1:G0vvOjif+gnnTTWBtvYqMBh8nMGM7eNkrZU/W2gdM6o=
 github.com/gorilla/websocket v1.4.0/go.mod h1:E7qHFY5m1UJ88s3WnNqhKjPHQ0heANvMoAMk2YaljkQ=
@@ -453,6 +453,8 @@ github.com/julienschmidt/httprouter v1.2.0/go.mod h1:SYymIcj16QtmaHHD7aYtjjsJG7V
 github.com/jung-kurt/gofpdf v1.0.3-0.20190309125859-24315acbbda5/go.mod h1:7Id9E/uU8ce6rXgefFLlgrJj/GYY22cpxn+r32jIOes=
 github.com/k-sone/snmpgo v3.2.0+incompatible h1:2NogYilKYSia0f+seO9P7aRa6MKG6RcnNc1L74L8WOw=
 github.com/k-sone/snmpgo v3.2.0+incompatible/go.mod h1:9MC6LeG1sGPgrwnmu/V/ncg9P2M5zS5IvE+c4KZj25g=
+github.com/karrick/godirwalk v1.16.1 h1:DynhcF+bztK8gooS0+NDJFrdNZjJ3gzVzC545UNA9iw=
+github.com/karrick/godirwalk v1.16.1/go.mod h1:j4mkqPuvaLI8mp1DroR3P6ad7cyYd4c1qeJ3RV7ULlk=
 github.com/kevinburke/ssh_config v0.0.0-20190725054713-01f96b0aa0cd/go.mod h1:CT57kijsi8u/K/BOFA39wgDQJ9CxiF4nAY/ojJ6r6mM=
 github.com/kevinburke/ssh_config v0.0.0-20201106050909-4977a11b4351 h1:DowS9hvgyYSX4TO5NpyC606/Z4SxnNYbT+WX27or6Ck=
 github.com/kevinburke/ssh_config v0.0.0-20201106050909-4977a11b4351/go.mod h1:CT57kijsi8u/K/BOFA39wgDQJ9CxiF4nAY/ojJ6r6mM=

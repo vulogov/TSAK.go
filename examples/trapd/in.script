@@ -10,8 +10,14 @@ djson = import("djson")
 
 
 
-addr ,_ = net.ResolveUDPAddr("udp","127.0.0.1:9162")
+addr , err = net.ResolveUDPAddr("udp","127.0.0.1:9162")
+if err != nil {
+  log.Trace(fmt.Sprintf("Error resolving address: %s", err))
+}
 conn , err = net.ListenUDP("udp", addr)
+if err != nil {
+  log.Trace(fmt.Sprintf("Error listening address: %s", err))
+}
 
 buf = make([]byte, 3000)
 if err == nil {

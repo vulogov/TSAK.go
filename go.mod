@@ -14,9 +14,10 @@ require (
 	github.com/goml/gobrain v0.0.0-20200606141943-08de5fe3f708
 	github.com/google/go-cmp v0.5.2 // indirect
 	github.com/google/uuid v1.1.2
-	github.com/goreleaser/goreleaser v0.147.1 // indirect
+	github.com/goreleaser/goreleaser v0.147.2 // indirect
 	github.com/hallidave/mibtool v0.2.0
 	github.com/k-sone/snmpgo v3.2.0+incompatible
+	github.com/karrick/godirwalk v1.16.1
 	github.com/keysight/clipsgo v0.0.0-20200916214512-ed6292fa672e
 	github.com/kr/text v0.2.0 // indirect
 	github.com/mattn/anko v0.1.8
